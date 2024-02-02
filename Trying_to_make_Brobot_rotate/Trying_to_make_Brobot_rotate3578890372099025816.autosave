@@ -66,8 +66,8 @@ void draw() {
   rectMode(CENTER);
   ellipseMode(CENTER);
   background(145,5,29);
-  //heartbeat = (200 - frameCount%400);
-  
+  heartbeat = (200 - frameCount%400);
+  println(heartbeat);
 
   //Brobots antenne
   strokeWeight(4);
@@ -150,9 +150,7 @@ void draw() {
   //line(hjulbenX, 380, hjulbenX, 450);
   //line(hjulbenX+hjulbenW/3, 388, hjulbenX+hjulbenW/3, 440);
   noFill();
-  direction = cos((2*PI*(frameCount%200)/400));
-  println(direction);
-  ellipse(hjulbenX-hjulbenW/3+5+10*direction ,415, 1+52*(200-torsoW)/200, 52);       //Højre
+  ellipse(hjulbenX-hjulbenW/3+(15*heartbeat/200) ,415, 1+52*(200-torsoW)/200, 52);       //Højre
   //ellipse(hjulbenX-hjulbenW/3+(15-torsoW*hjulbenW/600) ,415, 1, 52);
   ellipse(hjulbenX,415, 1, 70);                  //Midter "Linjen"
   //ellipse(hjulbenX+hjulbenW/3-(200*hjulbenW/600-torsoW*hjulbenW/600) ,415, 1+52*(200-torsoW)/200, 52);     //Venstre
@@ -169,7 +167,7 @@ void draw() {
   rightLegX = torsoX-torsoW/8;
   //rect(rightLegX, rightLegY, legW, legH);
   rect(rightLegX, rightLegY, legW+legChange, legH);
-  //println(legChange + " - " + change);
+  println(legChange + " - " + change);
   
   //Venstre ben
   leftLegX = torsoX+torsoW/8;
@@ -188,7 +186,7 @@ void draw() {
   strokeWeight(1);
   fill(155);
   rect(torsoX, torsoY, torsoW, torsoH);
-  torsoW = torsoW+change;           // Opdaterer bredden
+  
   
    //Hvis rect når højre bredde på torsos størrelse, skift da retning til venstre
    if (torsoW >= 200) {
@@ -199,7 +197,7 @@ void draw() {
    if (torsoW <= 0) {
      change = 1;
    }
-  
+  torsoW = abs(heartbeat);           // Opdaterer bredden
  
   
   //Fun and games
