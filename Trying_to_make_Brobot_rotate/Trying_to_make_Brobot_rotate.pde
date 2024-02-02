@@ -41,8 +41,7 @@ float hjulbenX;
 float hjulbenY;
 float hjulbenW;
 
-
-
+int heartbeat;
 float direction;
 float change = 0.5;
 
@@ -67,6 +66,7 @@ void draw() {
   rectMode(CENTER);
   ellipseMode(CENTER);
   background(145,5,29);
+  heartbeat = (200 - frameCount%400);
 
   //Brobots antenne
   strokeWeight(4);
@@ -149,7 +149,7 @@ void draw() {
   //line(hjulbenX, 380, hjulbenX, 450);
   //line(hjulbenX+hjulbenW/3, 388, hjulbenX+hjulbenW/3, 440);
   noFill();
-  ellipse(hjulbenX-hjulbenW/3+((200-torsoW)*hjulbenW/600) ,415, 1+52*(200-torsoW)/200, 52);       //Højre
+  ellipse(hjulbenX-hjulbenW/3+(15*heartbeat/200) ,415, 1+52*(200-torsoW)/200, 52);       //Højre
   //ellipse(hjulbenX-hjulbenW/3+(15-torsoW*hjulbenW/600) ,415, 1, 52);
   ellipse(hjulbenX,415, 1, 70);                  //Midter "Linjen"
   //ellipse(hjulbenX+hjulbenW/3-(200*hjulbenW/600-torsoW*hjulbenW/600) ,415, 1+52*(200-torsoW)/200, 52);     //Venstre
@@ -185,7 +185,7 @@ void draw() {
   strokeWeight(1);
   fill(155);
   rect(torsoX, torsoY, torsoW, torsoH);
-  torsoW = torsoW + change;           // Opdaterer x-koordinatet baseret på retning
+  torsoW = abs(heartbeat);           // Opdaterer bredden
   
    //Hvis rect når højre bredde på torsos størrelse, skift da retning til venstre
    if (torsoW >= 200) {
