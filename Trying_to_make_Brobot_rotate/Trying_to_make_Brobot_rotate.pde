@@ -47,13 +47,13 @@ float change = 0.5;
 
 void setup() {
   size(500, 500);
-//Diverse variabler
+  //Diverse variabler
   torsoX = width/2;
   torsoY = 310;
   torsoW = 200;
   torsoH = 125;
   rightLegX = torsoX-torsoW/8;
-  rightLegY = 396;  
+  rightLegY = 396;
   leftLegX = torsoX+torsoW/8;
   leftLegY = 396;
   legW = 10;
@@ -65,9 +65,9 @@ void setup() {
 void draw() {
   rectMode(CENTER);
   ellipseMode(CENTER);
-  background(145,5,29);
+  background(145, 5, 29);
   //heartbeat = (200 - frameCount%400);
-  
+
 
   //Brobots antenne
   strokeWeight(4);
@@ -82,7 +82,7 @@ void draw() {
   fill(155);
   headX = width/2;
   headY = 175;
-  rect(headX, headY , 150, 100);
+  rect(headX, headY, 150, 100);
 
   //Brobots øjne
   strokeWeight(1);
@@ -142,7 +142,7 @@ void draw() {
   hjulbenY = 415;
   hjulbenW = 30;
   ellipse(hjulbenX, hjulbenY, 30+(40-torsoW/5), 70);
-  
+
   //Linjerne i hjulet
   stroke(0);
   strokeWeight(1);
@@ -152,29 +152,29 @@ void draw() {
   noFill();
   direction = cos((2*PI*(frameCount%800)/800));
   println(direction);
-  ellipse(hjulbenX-hjulbenW/3-10*direction ,415, 1+52*(200-torsoW)/200, 52);       //Højre
+  ellipse(hjulbenX-hjulbenW/3-10*direction, 415, 1+52*(200-torsoW)/200, 52);       //Højre
   //ellipse(hjulbenX-hjulbenW/3+(15-torsoW*hjulbenW/600) ,415, 1, 52);
-  ellipse(hjulbenX,415, 1, 70);                  //Midter "Linjen"
+  ellipse(hjulbenX, 415, 1, 70);                  //Midter "Linjen"
   //ellipse(hjulbenX+hjulbenW/3-(200*hjulbenW/600-torsoW*hjulbenW/600) ,415, 1+52*(200-torsoW)/200, 52);     //Venstre
 
   //Brobots ben
   stroke(0);
   fill(0);
   strokeWeight(1);
-  
+
   //Højre Ben
-  if (torsoW<10 && torsoW>0){
+  if (torsoW<10 && torsoW>0) {
     legChange +=change;
   }
   rightLegX = torsoX-torsoW/8;
   //rect(rightLegX, rightLegY, legW, legH);
   rect(rightLegX, rightLegY, legW+legChange, legH);
   //println(legChange + " - " + change);
-  
+
   //Venstre ben
   leftLegX = torsoX+torsoW/8;
   rect(leftLegX, leftLegY, legW+legChange, legH);
-  
+
   //Hænglserne
   strokeWeight(4);
   //Right dot
@@ -189,22 +189,20 @@ void draw() {
   fill(155);
   rect(torsoX, torsoY, torsoW, torsoH);
   torsoW = torsoW+change;           // Opdaterer bredden
-  
-   //Hvis rect når højre bredde på torsos størrelse, skift da retning til venstre
-   if (torsoW >= 200) {
-     change = -1;
-   }
-   
-   //Hvis rect når venstre bredde på torsos størrelse, skift retning til højre
-   if (torsoW <= 0) {
-     change = 1;
-   }
-  
- 
-  
+
+  //Hvis rect når højre bredde på torsos størrelse, skift da retning til venstre
+  if (torsoW >= 200) {
+    change = -1;
+  }
+
+  //Hvis rect når venstre bredde på torsos størrelse, skift retning til højre
+  if (torsoW <= 0) {
+    change = 1;
+  }
+
+
+
   //Fun and games
   //rectMode(CENTER);
   //rect(mouseX,mouseY,30,30);
-  
-  
 }
