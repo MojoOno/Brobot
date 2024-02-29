@@ -105,10 +105,12 @@ class Brobot {
     fill(mouthRed, mouthGreen, mouthBlue);
     rect(headX, headY+28, 70, 30);
 
+    
+
     //Brobots tænder (horisontal)
     line(headX-35, headY+23, headX+35, headY+23);
     line(headX-35, headY+32, headX+35, headY+32);
-
+                                                        //Lav tænderne med array og et loop, så de kan skifte farve for hver tand.
     //Brobots tænder (vertical) 14
     line(headX-21, headY+13, headX-21, headY+43);
     line(headX-7, headY+13, headX-7, headY+43);
